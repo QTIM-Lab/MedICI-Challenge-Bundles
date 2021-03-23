@@ -14,11 +14,10 @@ RUN groupadd -g 999 appuser && \
     useradd -r -u 1000 -g appuser appuser
 USER appuser
 
-COPY app.py /app/
+COPY ./app.py /app/
 
 WORKDIR /app/
 
 CMD ["python", "app.py"]
-
-# CMD sleep 10000
+# CMD sleep 600
 #bCMD ["python", "/app/ingestion_program/ingestion.py", "/mnt/inputdata", "/mnt/output", "/app/ingestion_program", "/app/sample_code_submission"]

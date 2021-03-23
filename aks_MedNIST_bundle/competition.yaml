@@ -1,0 +1,91 @@
+# Competition YAML file : general challenge defition
+admin_names: bbearce,kalpathy
+allow_public_submissions: true
+allow_teams: false
+anonymous_leaderboard: false
+description: MedNIST Classification
+start_date: 2021-02-10 00:00:00+00:00
+#competition_docker_image: 'codalab/codalab-legacy:py37' Used to evaluate data and code from participants
+disallow_leaderboard_modifying: true
+enable_detailed_results: true
+enable_forum: true
+enable_per_submission_metadata: false
+end_date: null
+force_submission_to_leaderboard: true
+has_registration: false
+html:
+  data: data.html
+  docker: upload_docker_submission.html
+  evaluation: evaluation.html
+  overview: overview.html
+  terms: terms.html
+image: logo.png
+
+# Phases
+phases:
+  # Training
+  1:
+    color: green
+    description: 'Training phase: create models and upload your docker images in preparation for the test phase.'
+    execution_time_limit: 500
+    input_data: phase-training-data
+    is_scoring_only: false
+    label: Training
+    max_submissions: 0
+    max_submissions_per_day: 0
+    phasenumber: 1
+    public_data: public_data.zip
+    reference_data: reference_data.zip
+    scoring_program: scoring_program.zip
+    start_date: 2020-08-01 18:53:00+00:00 # YYYY-MM-DD
+
+  # Test
+  2:
+    color: purple
+    description: 'Test phase'
+    execution_time_limit: 500
+    input_data: phase-test-data
+    is_scoring_only: false
+    label: Final
+    max_submissions: 100
+    max_submissions_per_day: 5
+    phasenumber: 2
+    reference_data: reference_data.zip
+    scoring_program: scoring_program.zip
+    start_date: 2020-08-20 18:53:00+00:00 # YYYY-MM-DD
+show_datasets_from_yaml: true
+title: MedNIST
+
+# Leaderboard
+leaderboard:
+  leaderboards:
+    Results: &id001
+      label: Results
+      rank: 1
+  columns:
+    set1_score:
+      label: Recall
+      leaderboard: *id001
+      numeric_format: 3
+      rank: 1
+
+    set2_score:
+      label: F1 Score
+      leaderboard: *id001
+      numeric_format: 3
+      rank: 2
+
+    set3_score:
+      label: Precision
+      leaderboard: *id001
+      numeric_format: 3
+      rank: 3
+      
+######## scores.txt ########
+# set1_score: 0.9463343249097503
+# set2_score: 0.9461839772566057
+# set3_score: 0.9476273787699148
+######## scores.txt ########
+      
+      
+      

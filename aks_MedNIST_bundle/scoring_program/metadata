@@ -1,0 +1,2 @@
+command: python $program/score.py $results_container_name $output
+description: Compute scores for the competition

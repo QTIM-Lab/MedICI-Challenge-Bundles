@@ -1,0 +1,16 @@
+<h1>MedICI: Evaluation</h1>
+<p>Phase 1 is a place holder phase allowing you time to gather and look at the data as well as train your model.</p>
+
+<p>At some point you will use the Upload Docker Submission tab under the Participate Tab to upload an image with your model inside. You will need to setup you docker image to accept a folder of images at '/mnt/in/ and post your prediction to '/mnt/out/'. '/mnt/in/' will house the test data set you will perform inference on. This upload process will accept a *.tar or *.tar.gz docker image created with:</p>
+
+<code>
+$ docker save repo/image:tag | gzip > image_name.tar.gz
+
+or
+
+$ docker save repo/image:tag > image_name.tar
+</code>
+
+<p>Upon completion of the upload you will see a list of available image tags. These are images in a private repo and we will provide you the tag for each of your images.</p>
+
+<p>Phase 2 will accept the docker tags you upload as a submission. We will then run your docker image with the afore mentioned mounts so that your model can infer the correct classes from the test input.</p>
