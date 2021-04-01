@@ -21,7 +21,7 @@ Must have a partnersID to participate in the challenge
 
 ### Register for the challenge:
 Sign up for the website in general in the upper right on the Sign Up link.
-![Sign Up](./README/sign_up.png)
+![Sign Up](./sign_up.png)
 
 
 ## Docker Submission
