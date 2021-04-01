@@ -64,4 +64,7 @@ zip -j sample_data_submission.zip path_to_csv_or_folder_for_csv/*
 Use the submit button to submit zipped up csv file:
 ![sample_data_submission](sample_data_submission.png)
 
+It should finish and afterwards if you refresh the page you can see a score:
+![personal_leaderboard](personal_leaderboard.png)
+
 ## Docker Submission
