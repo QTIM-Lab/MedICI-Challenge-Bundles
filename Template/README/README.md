@@ -21,7 +21,12 @@ Must have a partnersID to participate in the challenge
 
 ### Register for the challenge:
 Sign up for the website in general in the upper right on the Sign Up link.
-![Sign Up](./sign_up.png)
+![Sign Up](sign_up.png)
 
+> You will have to verify email on prod environment
+
+### Register for the Challenge
+On the main page find the challenge and select it:
+![challenge_card](challenge_card.png)
 
 ## Docker Submission
