@@ -67,4 +67,10 @@ Use the submit button to submit zipped up csv file:
 It should finish and afterwards if you refresh the page you can see a score:
 ![personal_leaderboard](personal_leaderboard.png)
 
+Expand results with the "+" button to the right and add to leaderboard:
+![submission_expanded](submission_expanded.png)
+
+Next to the *Participate* tab should be a *Results* tab where you can view the results on the main leaderboard (which can be hidden).
+![leaderboard](leaderboard.png)
+
 ## Docker Submission
