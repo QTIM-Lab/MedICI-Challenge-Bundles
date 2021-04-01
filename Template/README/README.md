@@ -11,7 +11,7 @@ The dataset consists of fake data that will be evaluated. It will have an answer
 Participants are asked to submit files that contain the key, representing classification cases, and class (one of three choices within set {'a','b'}). The contents of an example sumission file is shown below:
 
 |key|class |
-|----------|
+|---|------|
 |1  |a     |
 |2  |a     |
 |3  |b     |
