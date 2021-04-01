@@ -73,4 +73,9 @@ Expand results with the "+" button to the right and add to leaderboard:
 Next to the *Participate* tab should be a *Results* tab where you can view the results on the main leaderboard (which can be hidden).
 ![leaderboard](leaderboard.png)
 
+### Summary
+That is most basic challenge type (data submission). These challenges can have participants submit essentially any data type (text, csv, image) and then that can be judged an a custom way with a socring program. This example compared a submission csv to a ground truth csv.
+
+Proceed to the next section to recreate this demo with a docker submission
+
 ## Docker Submission
