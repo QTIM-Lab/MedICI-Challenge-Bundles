@@ -79,3 +79,64 @@ That is most basic challenge type (data submission). These challenges can have p
 Proceed to the next section to recreate this demo with a docker submission
 
 ## Docker Submission
+
+### Upload Docker Submission Template
+In the same git repo we are in go up one level to the *Template* folder. This is the Template Challenge source code. Go into the *dockersubmission_template* folder
+
+To create a docker submission, zip this up just like the other data submission; just make sure you get both the Dockerfile and submission.py
+
+```
+zip -j docker_submission_v1.zip \
+       docker_submission_template/Dockerfile \
+       docker_submission_template/submission.py
+```
+
+Goto the "Upload Docker Submission" left side tab under the main *Participate* tab. Use the "Choose file button to upload the zip file you just made".
+
+> ...4/1/2021 Azure broke and I'm waiting for it to come back online...the rest to follow
+
+### Understanding The ### Upload Docker Submission Template
+
+[1] Assuming you are still in the *dockersubmission_template* folder and assuming you have docker installed locally or on a server to practice, run this code to build an image:
+
+```
+$ docker build -t repo_example/image:latest .
+Sending build context to Docker daemon  42.87MB
+Step 1/4 : FROM python:3.10.0a4-slim-buster
+ ---> f9a64bb647af
+Step 2/4 : WORKDIR ./workspace
+ ---> Using cache
+ ---> bb043e6f5cdb
+Step 3/4 : COPY submission.py /workspace
+ ---> Using cache
+ ---> fd78b624134e
+Step 4/4 : CMD ["python", "submission.py"]
+ ---> Using cache
+ ---> aa0ccc3f7c51
+Successfully built aa0ccc3f7c51
+Successfully tagged repo_example/image:latest
+```
+
+[2] Now we can see what this does. Setup an evaluation environment with this code:
+```
+$ mkdir -p input/ref
+$ mkdir -p input/res
+$ mkdir -p output
+```
+
+[3] Make a sample ground truth file as such:
+
+*ground_truth.csv:*  
+```
+key,class 
+1,a 
+2,a 
+3,b 
+4,a 
+5,b 
+6,b 
+7,a 
+8,a 
+9,b 
+10,b 
+```
