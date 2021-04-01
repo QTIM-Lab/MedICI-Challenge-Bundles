@@ -17,6 +17,11 @@ Each will have the same scoring mechanism looking for:
 Docker image is the submission medium of choice.
 Must have a partnersID to participate in the challenge
 
-# Non Docker Submission
+## Non Docker Submission
 
-# Docker Submission
+### Register for the challenge:
+Sign up for the website in general in the upper right on the Sign Up link.
+![Sign Up](./README/sign_up.png)
+
+
+## Docker Submission
