@@ -53,4 +53,15 @@ The challenge landing page should have intitive tabs with the same content you s
 Select the *Participate* tab to begin registgration.
 ![Register](register.png)
 
+Once registered select "Submit / View Results" on the left to make your first submission
+
+### Submit example
+Create the csv specified in Get Data and zip it to a folder. On linux this is done like so:
+```
+zip -j sample_data_submission.zip path_to_csv_or_folder_for_csv/*
+```
+
+Use the submit button to submit zipped up csv file:
+![sample_data_submission](sample_data_submission.png)
+
 ## Docker Submission
