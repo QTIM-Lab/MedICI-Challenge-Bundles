@@ -29,4 +29,7 @@ Sign up for the website in general in the upper right on the Sign Up link.
 On the main page find the challenge and select it:  
 ![challenge_card](challenge_card.png)
 
+The challenge landing page should have intitive tabs with the same content you saw at the beginning of this tutorial.  
+![challenge_landing_page](challenge_landing_page.png)
+
 ## Docker Submission
