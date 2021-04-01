@@ -2,9 +2,9 @@
 *.pyc
 *.logs
 *.zip
+venv/
 aks_MedNIST_bundle/input_data/
 aks_MedNIST_bundle/public_data/
-aks_MedNIST_bundle/venv/
 aks_MedNIST_bundle/model_output
 aks_MedNIST_bundle/output_pred
 aks_MedNIST_bundle/public_data
