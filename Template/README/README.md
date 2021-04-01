@@ -95,7 +95,7 @@ Goto the "Upload Docker Submission" left side tab under the main *Participate* t
 
 > ...4/1/2021 Azure broke and I'm waiting for it to come back online...the rest to follow
 
-### Understanding The ### Upload Docker Submission Template
+### Understanding The Upload Docker Submission Template
 
 [1] Assuming you are still in the *dockersubmission_template* folder and assuming you have docker installed locally or on a server to practice, run this code to build an image:
 
@@ -117,16 +117,17 @@ Successfully built aa0ccc3f7c51
 Successfully tagged repo_example/image:latest
 ```
 
-[2] Now we can see what this does. Setup an evaluation environment with this code:
+[2] Now we can see what this does. Setup an evaluation environment with this code (this mimics what will happen on the system at run time):
 ```
-$ mkdir -p input/ref
-$ mkdir -p input/res
-$ mkdir -p output
+$ mkdir -p input_data # input data source
+$ mkdir -p input/ref # groud truth
+$ mkdir -p input/res # results from participant algorithm
+$ mkdir -p output # scoring program output
 ```
 
-[3] Make a sample ground truth file as such:
+[3] Make a sample ground truth file as such and put it in the *input/ref/* directory.:
 
-*ground_truth.csv:*  
+*ground_truth.csv*  
 ```
 key,class 
 1,a 
@@ -140,3 +141,31 @@ key,class
 9,b 
 10,b 
 ```
+
+[4] Make the input data file, which is just a key and could be actual images, and put in *input_data*
+
+*input_data.csv*
+```
+key
+1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+```
+
+[5] Run this command to create a prediction:
+
+```
+$ docker run \
+  -v $PWD/input_data:/mnt/in \
+  -v $PWD/input/res:/mnt/out \
+  repo_example/image:latest 
+```
+
+If all goes well you should see "output_data.csv" under */input/res*. This is titled this way from the perspective of the scoring program. It's input is the result of the participant output, or "results"/"res".
