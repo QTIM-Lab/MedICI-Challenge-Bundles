@@ -5,6 +5,23 @@ A general classification challenge, this demo will ask you to guess the answers 
 
 Participants will be evaluated against 3 metrics (% correct, sensitivity and specificity), and are expected to submit docker containers for their evaulation.
 
+## Get Data
+The dataset consists of fake data that will be evaluated. It will have an answer key.
+
+Participants are asked to submit files that contain the key, representing classification cases, and class (one of three choices within set {'a','b'}). The contents of an example sumission file is shown below:
+
+key,class
+1,a
+2,a
+3,b
+4,a
+5,b
+6,b
+7,a
+8,a
+9,b
+10,b
+
 ## Evaluation
 The challenge will consist of three phases: a training phase, a validation (or fine-tuning) phase, and a final test phase.
 
