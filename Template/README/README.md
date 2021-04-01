@@ -32,4 +32,7 @@ On the main page find the challenge and select it:
 The challenge landing page should have intitive tabs with the same content you saw at the beginning of this tutorial.  
 ![challenge_landing_page](challenge_landing_page.png)
 
+Select the *Participate* tab to begin registgration.
+![Register](register.png)
+
 ## Docker Submission
