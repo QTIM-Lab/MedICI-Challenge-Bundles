@@ -95,9 +95,12 @@ Goto the *Upload Docker Submission* left side tab under the main *Participate* t
 
 ![upload_docker_image](upload_docker_image.png)
 
-Already uploaded images will be under the "Images:" heading. Copy that image to your clipboard or memory and head to the *Submit / View Results* side tab under *Participate*.
+Already uploaded images will be under the "Images:" heading. Copy the uploaded image name to your clipboard and head to the *Submit / View Results* side tab under *Participate*.
 
+Once there clck the *Submit Docker* button and paste in the image name you copied and click send.
 ![sample_docker_submission](sample_docker_submission.png)
+
+Your results should be visible once the job is done as before in the results table below.
 
 > ...4/1/2021 Azure broke and I'm waiting for it to come back online...the rest to follow
 
