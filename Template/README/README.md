@@ -93,8 +93,9 @@ zip -j docker_submission_v1.zip \
 
 Goto the *Upload Docker Submission* left side tab under the main *Participate* tab. Use the *Choose File* button to upload the zip file you just made.
 
-![upload_docker_image](upload_docker_image.png)
+![upload_docker_image](upload_docker_image.png?)
 
+Already uploaded images will be under the "Images:" heading.
 > ...4/1/2021 Azure broke and I'm waiting for it to come back online...the rest to follow
 
 ### Understanding The Upload Docker Submission Template
