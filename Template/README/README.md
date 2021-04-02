@@ -81,7 +81,7 @@ Proceed to the next section to recreate this demo with a docker submission
 ## Docker Submission
 
 ### Upload Docker Submission Template
-In the same git repo we are in go up one level to the *Template* folder. This is the Template Challenge source code. Go into the *dockersubmission_template* folder
+In the same git repo we are in go up one level to the *Template* folder. This is the Template Challenge source code. Go into the *docker_submission_template* folder
 
 To create a docker submission, zip this up just like the other data submission; just make sure you get both the Dockerfile and submission.py
 
@@ -91,7 +91,9 @@ zip -j docker_submission_v1.zip \
        docker_submission_template/submission.py
 ```
 
-Goto the "Upload Docker Submission" left side tab under the main *Participate* tab. Use the "Choose file button to upload the zip file you just made".
+Goto the *Upload Docker Submission* left side tab under the main *Participate* tab. Use the *Choose File* button to upload the zip file you just made.
+
+![upload_docker_image](upload_docker_image.png)
 
 > ...4/1/2021 Azure broke and I'm waiting for it to come back online...the rest to follow
 
@@ -168,4 +170,8 @@ $ docker run \
   repo_example/image:latest 
 ```
 
-If all goes well you should see "output_data.csv" under */input/res*. This is titled this way from the perspective of the scoring program. It's input is the result of the participant output, or "results"/"res".
+If all goes well you should see "output_data.csv" under */input/res*. This is titled this way from the perspective of the scoring program. Its input is the result of the participant output, or "results","res" for short.
+
+All participants need to know is where their data comes from and where to put results.
+
+You'll notice in *docker_submission_template/submission.py* that all caps variables IN and OUT are set to paths '/mnt/in' and 'mnt/out'. Those directories will be mounted during execution and will provide your input data and a place to put your algorithm output. 
