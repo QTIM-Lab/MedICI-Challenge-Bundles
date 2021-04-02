@@ -95,7 +95,10 @@ Goto the *Upload Docker Submission* left side tab under the main *Participate* t
 
 ![upload_docker_image](upload_docker_image.png)
 
-Already uploaded images will be under the "Images:" heading.
+Already uploaded images will be under the "Images:" heading. Copy that image to your clipboard or memory and head to the *Submit / View Results* side tab under *Participate*.
+
+![sample_docker_submission](sample_docker_submission.png)
+
 > ...4/1/2021 Azure broke and I'm waiting for it to come back online...the rest to follow
 
 ### Understanding The Upload Docker Submission Template
