@@ -102,8 +102,6 @@ Once there clck the *Submit Docker* button and paste in the image name you copie
 
 Your results should be visible once the job is done as before in the results table below.
 
-> ...4/1/2021 Azure broke and I'm waiting for it to come back online...the rest to follow
-
 ### Understanding The Upload Docker Submission Template
 
 [1] Assuming you are still in the *dockersubmission_template* folder and assuming you have docker installed locally or on a server to practice, run this code to build an image:
