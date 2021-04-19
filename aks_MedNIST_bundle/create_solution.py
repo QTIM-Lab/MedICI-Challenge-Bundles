@@ -19,7 +19,7 @@ image_files = [[os.path.join(data_dir, class_name, x)
 test = [[i for i in ilist if i.find('000001') != -1] for ilist in image_files][0:5]
 print(test) # There should only be one file named 000001.jpg, but there are more.
 
-# Rename file so they are all distinct
+# Rename files so they are all distinct
 img_number = 0
 for class_image_list in image_files:
     for image in class_image_list:
@@ -129,7 +129,8 @@ def move_data(which='training'):
         i += 1;
         # print(i,file)
         file_name = file[file.rfind('/')+1:]
-        copyfile(os.path.join(file), os.path.join(participant_data_directory,which,file_name))
+        # copyfile(os.path.join(file), os.path.join(participant_data_directory,which+"-data",file_name)) # I think this is new correct naming convention
+        # copyfile(os.path.join(file), os.path.join(participant_data_directory,which,file_name))
         # print(os.path.exists(os.path.join(participant_data_directory,which,new_destination)))
 
 move_data('training')

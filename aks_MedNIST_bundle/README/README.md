@@ -8,7 +8,7 @@ tar -zxf MedNIST.tar.gz;
 mv MedNIST input_data_all;
 ```
 
-# Build Docker Image:
+# Build Training Docker Image:
 ```bash
 docker build -f docker_code_training/Dockerfile -t medicichallenges/mednist:training .;
 ```
