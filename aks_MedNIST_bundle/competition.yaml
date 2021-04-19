@@ -1,4 +1,4 @@
-# Competition YAML file : general challenge defition
+# Competition YAML file : general challenge definition
 admin_names: bbearce,kalpathy
 allow_public_submissions: true
 allow_teams: false
@@ -28,8 +28,7 @@ phases:
     color: green
     description: 'Training phase: create models and upload your docker images in preparation for the test phase.'
     execution_time_limit: 500
-    input_data: phase-training-data
-    is_scoring_only: false
+    is_scoring_only: true
     label: Training
     max_submissions: 0
     max_submissions_per_day: 0
@@ -38,14 +37,14 @@ phases:
     reference_data: reference_data.zip
     scoring_program: scoring_program.zip
     start_date: 2020-08-01 18:53:00+00:00 # YYYY-MM-DD
+    # input_data: phase-training-data # In Patrick's kubernetes version from blob mounting
 
   # Test
   2:
     color: purple
     description: 'Test phase'
     execution_time_limit: 500
-    input_data: phase-test-data
-    is_scoring_only: false
+    is_scoring_only: true
     label: Final
     max_submissions: 100
     max_submissions_per_day: 5
@@ -53,6 +52,7 @@ phases:
     reference_data: reference_data.zip
     scoring_program: scoring_program.zip
     start_date: 2020-08-20 18:53:00+00:00 # YYYY-MM-DD
+    # input_data: phase-test-data # In Patrick's kubernetes version from blob mounting
 show_datasets_from_yaml: true
 title: MedNIST
 

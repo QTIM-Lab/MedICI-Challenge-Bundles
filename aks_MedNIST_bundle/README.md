@@ -16,9 +16,9 @@ docker build -f docker_code_training/Dockerfile -t medicichallenges/mednist:trai
 # Create Train, Validation and Test Splits and Solutions - Run by Challenge Organizer
 ```bash
 cd ../;
-mkdir -p input_data/training;
-mkdir -p input_data/validation;
-mkdir -p input_data/testing;
+mkdir -p input_data/training-data;
+mkdir -p input_data/validation-data;
+mkdir -p input_data/testing-data;
 
 docker run \
   -it \
@@ -47,29 +47,46 @@ docker run \
 Run ```python app.py```
 
 # Inference - Run by Challenge Platform
+
+## Build first
+```bash
+docker build -f docker_code_inference/Dockerfile -t medicichallenges/mednist:inference .
+```
+
 ```bash
 docker run \
   -it \
   --rm \
   --shm-size=256m \
-  -v $PWD/input_data:/mnt/in \
+  -v $PWD/input_data/test-data:/mnt/in \
   -v $PWD/output_pred:/mnt/out \
-  medicichallenges/mednist:inference_sleep \
+  medicichallenges/mednist:inference \
   bash
 ```
-##medicichallenges/mednist:inference
+<!-- CMD ["python", "inference_on_test.py"] -->
+<!-- #medicichallenges/mednist:inference_sleep -->
 
 
-# Scoring - Run by Chalenge Platform
+# Scoring - Run by Challenge Platform
 ```bash
 docker run \
   -it \
   --rm \
-  -v $PWD/reference_data:/mnt/solution \
-  -v $PWD/output_pred:/mnt/in \
-  -v $PWD/output_scoring:/mnt/out \
-  -v `pwd`:`pwd` \
-  -w `pwd`/scoring_program \
-  codalabinfrastructure.azurecr.io/aks-compute-worker:3 \
-  bash
+  -v $PWD/submission_directory:$PWD/submission_directory \
+  -w $PWD/submission_directory \
+  medicicodalabdev.azurecr.io/competitions-v1-compute-worker:docker \
+  python $PWD/submission_directory/program/score.py $PWD/submission_directory/input $PWD/submission_directory/output
+  # bash
 ```
+<!-- -v $PWD/reference_data:/mnt/solution \ -->
+
+
+docker run \
+  --rm \
+  -v /tmp/codalab/tmpZt7f5n/run:/tmp/codalab/tmpZt7f5n/run \
+  -v /tmp/codalab/tmp_wvavE:/tmp/codalab/tmp_wvavE\
+  -w /tmp/codalab/tmpZt7f5n/run \
+  codalab/codalab-legacy:latest \
+  python /tmp/codalab/tmpZt7f5n/run/program/score $results_container_name /tmp/codalab/tmpZt7f5n/run/output\
+
+<!-- codalabinfrastructure.azurecr.io/aks-compute-worker:3 \ -->

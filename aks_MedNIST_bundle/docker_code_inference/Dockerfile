@@ -1,10 +1,10 @@
-FROM projectmonai/monai:latest
+FROM projectmonai/monai:0.4.0
 
 # Install vi
 RUN apt update -y; apt-get install vim -y; apt-get -y install sudo
 
 
-# Mounts
+# Mounts, maybe useful for kubernetes later
 # /mnt/inputdata -> iris train data
 # /mnt/validationdata -> iris validation data
 # /mnt/output -> participant algorithm output -> 92-prediction-output

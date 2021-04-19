@@ -2,6 +2,7 @@
 *.pyc
 *.logs
 *.zip
+.vscode
 venv/
 aks_MedNIST_bundle/input_data/
 aks_MedNIST_bundle/public_data/

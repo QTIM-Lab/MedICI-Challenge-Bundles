@@ -40,6 +40,7 @@ if using_blob:
 
 score_file = open(os.path.join(OUT, 'scores.txt'), 'w')
 html_file = open(os.path.join(OUT, 'scores.html'), 'w')
+private_score = open(os.path.join(OUT, "private", 'private.txt'), 'w')
 
 # This file will be run like this:
 # python /tmp/codalab/tmpH8080V/run/program/score.py 126-prediction-output /tmp/codalab/tmpH8080V/run/output
@@ -145,8 +146,12 @@ score_file.write('set3_score: {}\n'.format(report['weighted avg']['precision']))
 report = classification_report(soln_classes, synced_pred_classes, target_names=set(soln_classes), digits=4)
 html_file.write(report)
 
+# private results
+private_score.write("PrIvAtE")
+
 score_file.close()
 html_file.close()
+private_score.close()
 
 # set1_score: 0.9463343249097503
 # set2_score: 0.9461839772566057

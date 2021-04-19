@@ -16,9 +16,10 @@ from monai.metrics import compute_roc_auc
 
 IN = '/mnt/in'
 OUT = '/mnt/out'
-data_dir = os.path.join(IN, 'testing')
+# data_dir = os.path.join(IN, 'test-data') # old way but I want to directly mount test-data
+data_dir = os.path.join(IN)
 
-on_platform = True
+on_platform = False # Kubernetes platform
 if on_platform:
     IN = '/mnt/inputdata/MedNIST'
     OUT = '/mnt/output'
