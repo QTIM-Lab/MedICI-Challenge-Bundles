@@ -1,19 +1,26 @@
 # MedNIST
 
-First we need to download the data:
+If you cloned this whole repo then we need to find our way to this directory:
+```
+MedICI-Challenge-Bundles/aks_MedNIST_bundle
+```
 
+At this "root" level is where the following commands will be run.
+
+# Download Data
 ```bash
 wget -q https://www.dropbox.com/s/5wwskxctvcxiuea/MedNIST.tar.gz;
 tar -zxf MedNIST.tar.gz;
 mv MedNIST input_data_all;
 ```
 
-# Build Training Docker Image:
+# Training (Tutorial In Progress)
+## Build Training Docker Image:
 ```bash
 docker build -f docker_code_training/Dockerfile -t medicichallenges/mednist:training .;
 ```
 
-# Create Train, Validation and Test Splits and Solutions - Run by Challenge Organizer
+## Create Train, Validation and Test Splits and Solutions - Run by Challenge Organizer
 ```bash
 cd ../;
 mkdir -p input_data/training-data;
@@ -32,7 +39,10 @@ docker run \
 ```
 
 
-# Start docker for training - Run by Participant
+## Start docker for training - Run by Participant
+
+> Note the training/validation splits from earlier are designed to be used for the training phase and the testing data for inference or final prediction phase.
+
 ```bash
 cd ../;
 docker run \
@@ -46,7 +56,12 @@ docker run \
 ```
 Run ```python app.py```
 
+There should be a model in ```$PWD/model_output```, saved by ```torch.save(model.state_dict(), os.path.join(OUT,'best_metric_model.pth'))``` on line ~160
+
+
 # Inference - Run by Challenge Platform
+
+Now that you have a model created and saved, we need to package that up with inference code to do the inference phase.
 
 ## Build first
 ```bash
