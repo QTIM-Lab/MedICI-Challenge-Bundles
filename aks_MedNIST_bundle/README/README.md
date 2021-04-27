@@ -91,7 +91,7 @@ cp scoring_program/score.py submission_directory/program/
 cp reference_data/testing_solution.csv submission_directory/input/ref/
 ```
 
-## Build inferenence image (what participants submit)
+## Build inference image (what participants submit)
 ```bash
 docker build -f docker_code_inference/Dockerfile -t medicichallenges/mednist:inference .
 ```
@@ -129,4 +129,16 @@ docker run \
   -v $PWD/submission_directory:$PWD/submission_directory \
   -w $PWD/submission_directory \
   local/score_image:latest
+```
+
+# Create submission for platform (website submission)
+
+Zip up your inference model, Dockerfile and code into a *.zip file and upload to the platform:
+
+```
+zip -j mednist_docker_image_inference.zip \
+    docker_code_inference/Dockerfile
+zip -r mednist_docker_image_inference.zip \
+    docker_code_inference/inference_on_test.py \
+    model_output
 ```
