@@ -76,7 +76,7 @@ Submission Directory:
   |- program (This is the scoring program [and any included dependencies] unzipped)
   |- output (This is where the scores.txt file is written by the scoring program)
 ```
-The only thing you need to worry about here is that your output from your inference calculation will end up in input/res. The rest is for the challenge organizer. Later in the scoring section I will show how the ```program``` folder will have the score program in it and we will use it to show how scores are calculated.
+The only thing you need to worry about here is that your output from your inference calculation will end up in ```input/res```. The rest is for the challenge organizer. Later in the scoring section I will show how the ```program``` folder will have the score program in it and we will use it to show how scores are calculated.
 
 So make this structure now and copy the score program and test phase reference data into the correct locations:
 ```
