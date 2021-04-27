@@ -3,11 +3,11 @@ import os, pdb, io
 from sys import argv
 # import urllib
 # from urlparse import urlsplit
-from aad_blob_helper import AadBlobHelper
+# from aad_blob_helper import AadBlobHelper
 from sklearn.metrics import classification_report
 
 # from PIL import Image
-import numpy as np
+# import numpy as np
 
 # Submission Directory (/tmp/codalab/tmp######/run)
 #   |- input

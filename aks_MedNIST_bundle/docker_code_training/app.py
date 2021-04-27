@@ -7,7 +7,6 @@ import pdb
 import torch
 from torch.utils.data import Dataset, DataLoader
 
-# from monai.config import print_config
 from monai.transforms import \
     Compose, LoadImage, AddChannel, ScaleIntensity, ToTensor, RandRotate, RandFlip, RandZoom
 
@@ -20,18 +19,14 @@ OUT = '/mnt/out'
 
 # Read image filenames from the dataset folders
 data_dir = IN
-train_path = os.path.join(data_dir,'training')
-val_path = os.path.join(data_dir,'validation')
-#test_path = os.path.join(data_dir,'testing') # hide
+train_path = os.path.join(data_dir,'training-data')
+val_path = os.path.join(data_dir,'validation-data')
 
 # Prepare training, validation and test data lists
-
 trainImages = []
 trainLabels = []
 validationImages = []
 validationLabels = []
-# testImages = [] # test
-# testLabels = [] # test
 
 def initialize_training_set(which='training'):
     with open(os.path.join(data_dir,f'{which}_solution.csv'), 'r') as solution:
@@ -44,14 +39,9 @@ def initialize_training_set(which='training'):
                 elif which == 'validation':
                     validationImages.append(os.path.join(IN,file))
                     validationLabels.append(class_name)
-                elif which == 'testing': # hide
-                    testImages.append(os.path.join(IN,file))
-                    testLabels.append(class_name)
-                # pdb.set_trace()
 
 initialize_training_set('training')
 initialize_training_set('validation')
-# initialize_training_set('testing') # hide
 
 class_names = set(validationLabels)
 num_class = len(class_names)
@@ -59,11 +49,8 @@ label_key = {'AbdomenCT':0, 'BreastMRI':1, 'CXR':2, 'ChestCT':3, 'Hand':4, 'Head
 
 trainLabels = [label_key[i] for i in trainLabels]
 validationLabels = [label_key[i] for i in validationLabels]
-# testLabels = [label_key[i] for i in testLabels] # hide
-
 
 # Define MONAI transforms, Dataset and Dataloader to pre-process data
-
 train_transforms = Compose([
     LoadImage(image_only=True),
     AddChannel(),
@@ -98,12 +85,9 @@ train_loader = DataLoader(train_ds, batch_size=300, shuffle=True, num_workers=10
 val_ds = MedNISTDataset(validationImages, validationLabels, val_transforms)
 val_loader = DataLoader(val_ds, batch_size=300, num_workers=10)
 
-# test_ds = MedNISTDataset(testImages, testLabels, val_transforms) # hide
-# test_loader = DataLoader(test_ds, batch_size=300, num_workers=10) # hide
-
 # Define network and optimizer
-
-device = torch.device("cpu")
+device = torch.device("cpu") #CPU
+# device = torch.device("cuda:0") #GPU
 model = densenet121(
     spatial_dims=2,
     in_channels=1,
@@ -115,11 +99,11 @@ epoch_num = 1
 val_interval = 1
 
 # Model training
-
 best_metric = -1
 best_metric_epoch = -1
 epoch_loss_values = list()
 metric_values = list()
+print(epoch_num)
 for epoch in range(epoch_num):
     print('-' * 10)
     print(f"epoch {epoch + 1}/{epoch_num}")
@@ -129,7 +113,6 @@ for epoch in range(epoch_num):
     for batch_data in train_loader:
         step += 1
         inputs, labels = batch_data[0].to(device), batch_data[1].to(device)
-        # pdb.set_trace()
         optimizer.zero_grad()
         outputs = model(inputs)
         loss = loss_function(outputs, labels)
@@ -164,20 +147,3 @@ for epoch in range(epoch_num):
                   f" at epoch: {best_metric_epoch}")
 
 print(f"train completed, best_metric: {best_metric:.4f} at epoch: {best_metric_epoch}")
-# model should be in memory and this step is really maybe only necessary during test run
-# model.load_state_dict(torch.load(os.path.join(OUT,'best_metric_model.pth')))
-
-# y_true = list()
-# y_pred = list()
-# # This is scoring territory as well
-# with torch.no_grad():
-#     data = 0
-#     for test_data in test_loader:
-#         print(f'data: {data}'); data += 1;
-#         # pdb.set_trace()
-#         # test_images = test_data.to(device)
-#         test_images, test_labels = test_data[0].to(device), test_data[1].to(device)
-#         pred = model(test_images).argmax(dim=1)
-#         for i in range(len(pred)):
-#             y_true.append(test_labels[i].item())
-#             y_pred.append(pred[i].item())
