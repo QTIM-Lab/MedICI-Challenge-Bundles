@@ -117,11 +117,7 @@ Create mock scoring docker image for testing:
 docker build -f scoring_program/Dockerfile -t local/score_image:latest scoring_program
 ```
 
-Copy scoring program to program folder:
-```
-cp scoring_program/score.py submission_directory/program/
-```
-
+Now run the score program:
 ```bash
 docker run \
   -it \
