@@ -6,9 +6,12 @@ git clone https://github.com/QTIM-Lab/MedICI-Challenge-Bundles.git
 ```
 
 If you cloned this whole repo then we need to find our way to this directory:
+## Linux and MacOS
 ```
 cd MedICI-Challenge-Bundles/aks_MedNIST_bundle
 ```
+## Windows
+Change directories into ```.\MedICI-Challenge-Bundles\aks_MedNIST_bundle``` from your present working directory.
 
 At this "root" level is where the following commands will be run.
 
@@ -24,22 +27,47 @@ mv MedNIST input_data_all;
 On MacOS you might need to install wget first. Follow these [instructions](https://www.cyberciti.biz/faq/howto-install-wget-om-mac-os-x-mountain-lion-mavericks-snow-leopard/) to install wget.
 
 ## Windows
-To install on Windows follow these [instructions](https://builtvisible.com/download-your-website-with-wget/).
+To install wget on Windows follow these [instructions](https://builtvisible.com/download-your-website-with-wget/).
+
+> Note if all else fails, simply visiting [https://www.dropbox.com/s/5wwskxctvcxiuea/MedNIST.tar.gz](https://www.dropbox.com/s/5wwskxctvcxiuea/MedNIST.tar.gz) and downloading the MedNIST.tar.gz file should work. From there you need to unzip it which should place the data in a folder called MedNIST. Finally rename the ```MedNIST``` folder to ```input_data_all```. 
 
 
 # Training
+## Docker Installation
+[Official Docs](https://docs.docker.com/engine/install/)
+
+Docker is not by default in the sudoers group on linux and maybe macOS. On linux and macOS you can run this command to add docker to the sudo group:
+```
+sudo usermod -aG docker $USER
+```
+
+On windows it works a little differently I believe and you need to add yourself to the docker group...further instructions are tbd.
+
 ## Build Training Docker Image:
 ```bash
 docker build -f docker_code_training/Dockerfile -t medicichallenges/mednist:training docker_code_training;
 ```
 
 ## Create Train, Validation and Test Splits and Solutions - Run by Challenge Organizer
+## Linux and MacOS
 ```bash
 mkdir -p input_data/training-data;
 mkdir -p input_data/validation-data;
 mkdir -p input_data/testing-data;
 mkdir -p reference_data;
+```
+## Windows
+Create the following directory structure:
+> Must be in ```.\MedICI-Challenge-Bundles\aks_MedNIST_bundle```
+```
+.\input_data
+    |training-data
+    |validation-data
+    |testing-data
+.\reference_data
+```
 
+```
 docker run \
   -it \
   --rm \
