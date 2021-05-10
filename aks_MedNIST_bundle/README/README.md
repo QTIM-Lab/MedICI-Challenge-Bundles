@@ -13,11 +13,19 @@ cd MedICI-Challenge-Bundles/aks_MedNIST_bundle
 At this "root" level is where the following commands will be run.
 
 # Download Data
+## Linux
+If using Linux you can run the following commands:
 ```bash
 wget -q https://www.dropbox.com/s/5wwskxctvcxiuea/MedNIST.tar.gz;
 tar -zxf MedNIST.tar.gz;
 mv MedNIST input_data_all;
 ```
+## MacOS
+On MacOS you might need to install wget first. Follow these [instructions](https://www.cyberciti.biz/faq/howto-install-wget-om-mac-os-x-mountain-lion-mavericks-snow-leopard/) to install wget.
+
+## Windows
+To install on Windows follow these [instructions](https://builtvisible.com/download-your-website-with-wget/).
+
 
 # Training
 ## Build Training Docker Image:
