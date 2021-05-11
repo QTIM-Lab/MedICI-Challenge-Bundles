@@ -72,6 +72,8 @@ docker run \
 
 Zip up your inference model, Dockerfile and code into a *.zip file and upload to the platform:
 
+## Linux and MacOS
+You can use this sample bash code to zip up their submission:
 ```
 zip -j mednist_docker_image_inference.zip \
     docker_code_inference/Dockerfile
@@ -80,6 +82,21 @@ zip -r mednist_docker_image_inference.zip \
     model_output
 ```
 
+## Windows
+Be sure to zip up into ```mednist_docker_image_inference.zip``` folders:
+
+* ```docker_code_inference``` with it's contained inference_on_test.py code file.
+* ```model_output``` folder with best_metric_model.pth model file.
+* ```Dockerfile``` in the root directory
+
+Either way for this example your .zip should look like this:
+```
+Dockerfile
+docker_code_inference
+    | inference_on_test.py
+model_output
+    | best_metric_model.pth
+```
 
 # Scoring - Run by Challenge Platform
 
