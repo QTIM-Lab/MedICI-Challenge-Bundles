@@ -68,6 +68,8 @@ docker run \
   python inference_on_test.py
 ```
 
+# Scoring - Run by Challenge Platform
+
 Before we continue, the platform this will run on operates in a specific directory structure:
 
 ```
@@ -81,8 +83,6 @@ Submission Directory:
 The only thing you need to worry about here is that your output from your inference calculation will end up in ```input/res```. The rest is for the challenge organizer. Later in the scoring section I will show how the ```program``` folder will have the score program in it and we will use it to show how scores are calculated.
 
 > You'll notice I mounted ```$PWD/submission_directory/input/res``` as discussed before in order to make sure the results of classification are available to the scoring program.
-
-# Scoring - Run by Challenge Platform
 
 Create mock scoring docker image for testing:
 
