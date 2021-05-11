@@ -15,10 +15,7 @@ Change directories into ```.\MedICI-Challenge-Bundles\aks_MedNIST_bundle``` from
 
 At this "root" level is where the following commands will be run.
 
-# Download Data
-
-# Training
-## Docker Installation
+# Docker Installation
 [Official Docs](https://docs.docker.com/engine/install/)
 
 > I noticed during install that the WSL for linux might not properly install by default. In fact it may cause Windows to not install docker at all. If this is the case one thing that worked was to uncheck the "WSL" install option upon installation and install WSL separately. WSL stands for Windows Subsystem in Linux. Installing WSL and docker separately and then restarting the machine seemed to work.
@@ -30,6 +27,7 @@ sudo usermod -aG docker $USER
 
 On windows it works a little differently I believe and you need to add yourself to the docker group...further instructions are tbd.
 
+# Training
 ## Build Training Docker Image:
 ```bash
 docker build -f docker_code_training/Dockerfile -t medicichallenges/mednist:training docker_code_training;
