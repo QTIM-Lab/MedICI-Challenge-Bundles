@@ -68,6 +68,19 @@ docker run \
   python inference_on_test.py
 ```
 
+# Create submission for platform (website submission)
+
+Zip up your inference model, Dockerfile and code into a *.zip file and upload to the platform:
+
+```
+zip -j mednist_docker_image_inference.zip \
+    docker_code_inference/Dockerfile
+zip -r mednist_docker_image_inference.zip \
+    docker_code_inference/inference_on_test.py \
+    model_output
+```
+
+
 # Scoring - Run by Challenge Platform
 
 Before we continue, the platform this will run on operates in a specific directory structure:
@@ -98,16 +111,4 @@ docker run \
   -v $PWD/submission_directory:$PWD/submission_directory \
   -w $PWD/submission_directory \
   local/score_image:latest
-```
-
-# Create submission for platform (website submission)
-
-Zip up your inference model, Dockerfile and code into a *.zip file and upload to the platform:
-
-```
-zip -j mednist_docker_image_inference.zip \
-    docker_code_inference/Dockerfile
-zip -r mednist_docker_image_inference.zip \
-    docker_code_inference/inference_on_test.py \
-    model_output
 ```
