@@ -18,7 +18,7 @@ At this "root" level is where the following commands will be run.
 # Docker Installation
 [Official Docs](https://docs.docker.com/engine/install/)
 
-> I noticed during install that the WSL for linux might not properly install by default. In fact it may cause Windows to not install docker at all. If this is the case one thing that worked was to uncheck the "WSL" install option upon installation and install WSL separately. WSL stands for Windows Subsystem in Linux. Installing WSL and docker separately and then restarting the machine seemed to work.
+> I noticed during Windows install that the WSL for linux might not properly install by default. In fact it may cause Windows to not install docker at all. If this is the case one thing that worked was to uncheck the "WSL" install option upon installation and install WSL separately. WSL stands for Windows Subsystem in Linux. Installing WSL and docker separately and then restarting the machine seemed to work.
 
 Docker is not by default in the sudoers group on linux and maybe macOS. On linux and macOS you can run this command to add docker to the sudo group:
 ```
@@ -32,26 +32,7 @@ On windows it works a little differently I believe and you need to add yourself 
 ```bash
 docker build -f docker_code_training/Dockerfile -t medicichallenges/mednist:training docker_code_training;
 ```
-
-## Create Train, Validation and Test Splits and Solutions - Run by Challenge Organizer
-## Linux and MacOS
-```bash
-mkdir -p input_data/training-data;
-mkdir -p input_data/validation-data;
-mkdir -p input_data/testing-data;
-mkdir -p reference_data;
-```
-## Windows
-Create the following directory structure:
-> Must be in ```.\MedICI-Challenge-Bundles\aks_MedNIST_bundle```
-```
-.\input_data
-    |training-data
-    |validation-data
-    |testing-data
-.\reference_data
-```
-
+## Run Training Image
 ```
 docker run \
   -it \
