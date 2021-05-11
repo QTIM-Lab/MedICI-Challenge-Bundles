@@ -35,7 +35,6 @@ docker build -f docker_code_training/Dockerfile -t medicichallenges/mednist:trai
 ## Run Training Image
 
 ```bash
-mkdir model_output;
 docker run \
   -it \
   --rm \
