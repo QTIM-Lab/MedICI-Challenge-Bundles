@@ -13,6 +13,16 @@ Original [Jupyter Notebook](https://colab.research.google.com/drive/1wy8XUSnNWlh
 
 The [Project Monai](https://github.com/Project-MONAI/MONAI) [docker image](https://hub.docker.com/r/projectmonai/monai) is used (```projectmonai/monai:latest```) from Dockerhub as the base image for both training and inference.
 
+After Training and Inference (classification) are performed you will be scored using the ```sklearn.metrics.classification_report``` method. From the [sklearn docs](https://scikit-learn.org/stable/modules/generated/sklearn.metrics.classification_report.html) this is what is calculated:
+
+> The reported averages include macro average (averaging the unweighted mean per label), weighted average (averaging the support-weighted mean per label), and sample average (only for multilabel classification). Micro average (averaging the total true positives, false negatives and false positives) is only shown for multi-label or multi-class with a subset of classes, because it corresponds to accuracy otherwise and would be the same for all metrics.
+
+When scored, we will report these metrics and display them on the leaderboard:
+
+* weighted average precision
+* weighted average recall
+* weighted average f1-score
+
 Clone repo:
 ```
 git clone https://github.com/QTIM-Lab/MedICI-Challenge-Bundles.git
