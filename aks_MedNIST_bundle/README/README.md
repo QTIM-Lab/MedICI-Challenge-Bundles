@@ -55,6 +55,7 @@ There should be a model in ```$PWD/model_output```, saved by ```torch.save(model
 ```bash
 docker build -f docker_code_inference/Dockerfile -t medicichallenges/mednist:inference .
 ```
+Now run the inference image:
 
 ```bash
 docker run \
