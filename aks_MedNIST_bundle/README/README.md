@@ -45,39 +45,11 @@ docker run \
   medicichallenges/mednist:training \
   python app.py
 ```
-> Might take ~15 min
+> Might take ~5 min
 
 There should be a model in ```$PWD/model_output```, saved by ```torch.save(model.state_dict(), os.path.join(OUT,'best_metric_model.pth'))``` on line ~160
 
-
 # Inference - Run by Challenge Platform
-
-Now that you have a model created and saved, we need to package that up with inference code to do the inference phase.
-
-Before we continue, the platform this will run on operates in a specific directory structure:
-
-```
-Submission Directory:
-  |- input
-    |- ref (This is the reference data unzipped - ground truth participants do not have access to)
-    |- res (This is the user submission - classification_results.csv)
-  |- program (This is the scoring program [and any included dependencies] unzipped)
-  |- output (This is where the scores.txt file is written by the scoring program)
-```
-The only thing you need to worry about here is that your output from your inference calculation will end up in ```input/res```. The rest is for the challenge organizer. Later in the scoring section I will show how the ```program``` folder will have the score program in it and we will use it to show how scores are calculated.
-
-So make this structure now and copy the score program and test phase reference data into the correct locations:
-```
-# create submission_directory
-mkdir -p submission_directory/input/ref
-mkdir -p submission_directory/input/res
-mkdir -p submission_directory/program
-mkdir -p submission_directory/output
-
-# Load score program and testing solution
-cp scoring_program/score.py submission_directory/program/
-cp reference_data/testing_solution.csv submission_directory/input/ref/
-```
 
 ## Build inference image (what participants submit)
 ```bash
@@ -94,6 +66,20 @@ docker run \
   medicichallenges/mednist:inference \
   python inference_on_test.py
 ```
+
+Now that you have a model created and saved, we need to package that up with inference code to do the inference phase.
+
+Before we continue, the platform this will run on operates in a specific directory structure:
+
+```
+Submission Directory:
+  |- input
+    |- ref (This is the reference data unzipped - ground truth participants do not have access to)
+    |- res (This is the user submission - classification_results.csv)
+  |- program (This is the scoring program [and any included dependencies] unzipped)
+  |- output (This is where the scores.txt file is written by the scoring program)
+```
+The only thing you need to worry about here is that your output from your inference calculation will end up in ```input/res```. The rest is for the challenge organizer. Later in the scoring section I will show how the ```program``` folder will have the score program in it and we will use it to show how scores are calculated.
 
 > You'll notice I mounted ```$PWD/submission_directory/input/res``` as discussed before in order to make sure the results of classification are available to the scoring program.
 
