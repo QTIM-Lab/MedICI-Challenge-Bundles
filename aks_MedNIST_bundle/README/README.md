@@ -120,6 +120,19 @@ docker_code_inference
 model_output
     | best_metric_model.pth
 ```
+# Submitting and Using The Platform:
+## Sign Up
+![sign_up.png](../sign_up.png)
+## Register for Challenge
+![register.png](../register.png)
+## Upload Zipped Inference Algorithm
+![upload_zipped_inference_algorithm_1.png](../upload_zipped_inference_algorithm_1.png)
+![upload_zipped_inference_algorithm_2.png](../upload_zipped_inference_algorithm_2.png)
+## Submit Uploaded Image for Inference and Evalutation
+![submit_uploaded_image_for_inference_and_evaluation_1.png](../submit_uploaded_image_for_inference_and_evaluation_1.png)
+![submit_uploaded_image_for_inference_and_evaluation_2.png](../submit_uploaded_image_for_inference_and_evaluation_2.png)
+## View Leaderboard
+![submit_uploaded_image_for_inference_and_evaluation_1.png](../submit_uploaded_image_for_inference_and_evaluation_1.png)
 
 # Scoring - Run by Challenge Platform
 > This section is extra and not necessary for demo, but might help understanding what is happening during a submission.
