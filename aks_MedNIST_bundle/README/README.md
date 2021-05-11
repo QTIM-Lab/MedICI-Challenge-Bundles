@@ -3,7 +3,7 @@
 ## Intro and Context
 The MedNIST dataset was gathered from several sets from TCIA, the RSNA Bone Age Challenge, and the NIH Chest X-ray dataset.
 
-![logo](./logo.png)
+![logo](../logo.png)
 The dataset is kindly made available by Dr. Bradley J. Erickson M.D., Ph.D. (Department of Radiology, Mayo Clinic) under the Creative Commons CC BY-SA 4.0 license. If you use the MedNIST dataset, please acknowledge the source, e.g.
 
 Original [Jupyter Notebook](https://colab.research.google.com/drive/1wy8XUSnNWlhDNazFdvGBHLfdkGvOHBKe#scrollTo=JeC6o5OMAFN7) that this is based on is linked. Beware that in the Jupyter example ~60,000 images are used and downloaded. Here we use 1,800 in a split with 600 images each for training, validation, and testing. 
