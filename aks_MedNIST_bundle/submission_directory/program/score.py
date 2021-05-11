@@ -61,10 +61,6 @@ def get_predictions(pred):
 
 pred_images = []
 pred_classes = []
-# Running on infrastructure
-if using_blob:
-    pred = io.StringIO(unicode(blob_content))
-    pred_images, pred_classes = get_predictions(pred)
 
 # Running locally
 else:
