@@ -47,7 +47,7 @@ class MedNISTDataset(Dataset):
         return self.transforms(self.image_files[index])
 
 test_ds = MedNISTDataset(image_files, val_transforms)
-test_loader = DataLoader(test_ds, batch_size=300, num_workers=10)
+test_loader = DataLoader(test_ds, batch_size=100, num_workers=5)
 
 # Define network and optimizer
 device = torch.device("cpu") #CPU

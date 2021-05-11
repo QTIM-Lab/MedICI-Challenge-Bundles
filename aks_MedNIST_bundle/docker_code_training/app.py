@@ -79,11 +79,11 @@ class MedNISTDataset(Dataset):
         return self.transforms(self.image_files[index]), self.labels[index]
 
 train_ds = MedNISTDataset(trainImages, trainLabels, train_transforms)
-train_loader = DataLoader(train_ds, batch_size=300, shuffle=True, num_workers=10)
+train_loader = DataLoader(train_ds, batch_size=100, shuffle=True, num_workers=5)
 
 # Same pattern as train_ds, but we don't train on these. They also aren't used
 val_ds = MedNISTDataset(validationImages, validationLabels, val_transforms)
-val_loader = DataLoader(val_ds, batch_size=300, num_workers=10)
+val_loader = DataLoader(val_ds, batch_size=100, num_workers=5)
 
 # Define network and optimizer
 device = torch.device("cpu") #CPU
