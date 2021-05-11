@@ -50,7 +50,7 @@ docker run \
 There should be a model in ```$PWD/model_output```, saved by ```torch.save(model.state_dict(), os.path.join(OUT,'best_metric_model.pth'))``` on line ~160
 
 # Inference - Run by Challenge Platform
-
+Now that you have a model created and saved, we need to package that up with inference code to do the inference phase.
 ## Build inference image (what participants submit)
 ```bash
 docker build -f docker_code_inference/Dockerfile -t medicichallenges/mednist:inference .
@@ -67,8 +67,6 @@ docker run \
   medicichallenges/mednist:inference \
   python inference_on_test.py
 ```
-
-Now that you have a model created and saved, we need to package that up with inference code to do the inference phase.
 
 Before we continue, the platform this will run on operates in a specific directory structure:
 
