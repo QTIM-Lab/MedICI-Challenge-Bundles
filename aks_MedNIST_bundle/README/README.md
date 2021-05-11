@@ -100,7 +100,7 @@ model_output
 ```
 
 # Scoring - Run by Challenge Platform
-> Extra and not necessary for demo, but might help understanding what is happening during a submission.
+> This section is extra and not necessary for demo, but might help understanding what is happening during a submission.
 
 Before we continue, the scoring program will run in a specific directory structure:
 
