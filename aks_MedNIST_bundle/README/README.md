@@ -1,5 +1,14 @@
 # MedNIST
 
+## Intro and Context
+The MedNIST dataset was gathered from several sets from TCIA, the RSNA Bone Age Challenge, and the NIH Chest X-ray dataset.
+
+The dataset is kindly made available by Dr. Bradley J. Erickson M.D., Ph.D. (Department of Radiology, Mayo Clinic) under the Creative Commons CC BY-SA 4.0 license. If you use the MedNIST dataset, please acknowledge the source, e.g.
+
+Original [Jupyter Notebook](https://colab.research.google.com/drive/1wy8XUSnNWlhDNazFdvGBHLfdkGvOHBKe#scrollTo=JeC6o5OMAFN7) that this is based on is linked. Beware that in the Jupyter example ~60,000 images are used and downloaded. Here we use 1,800 in a split with 600 images each for training, validation, and testing. 
+
+The [Project Monai](https://github.com/Project-MONAI/MONAI) [docker image](https://hub.docker.com/r/projectmonai/monai) is used (```projectmonai/monai:latest```) from Dockerhub as the base image for both training and inference.
+
 Clone repo:
 ```
 git clone https://github.com/QTIM-Lab/MedICI-Challenge-Bundles.git
