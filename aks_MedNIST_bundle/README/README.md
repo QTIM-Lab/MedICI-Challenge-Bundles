@@ -67,6 +67,7 @@ docker run \
   medicichallenges/mednist:inference \
   python inference_on_test.py
 ```
+> You'll notice I mount ```$PWD/submission_directory/input/res``` in order to make sure the results of classification are available to the scoring program. See below section for details.
 
 # Create submission for platform (website submission)
 
@@ -111,9 +112,7 @@ Submission Directory:
   |- program (This is the scoring program [and any included dependencies] unzipped)
   |- output (This is where the scores.txt file is written by the scoring program)
 ```
-The only thing you need to worry about here is that your output from your inference calculation will end up in ```input/res```. The rest is for the challenge organizer. Later in the scoring section I will show how the ```program``` folder will have the score program in it and we will use it to show how scores are calculated.
-
-> You'll notice I mounted ```$PWD/submission_directory/input/res``` as discussed before in order to make sure the results of classification are available to the scoring program.
+The only thing you need to worry about here is that your output from your inference calculation will end up in ```input/res```. The rest is for the challenge organizer. The ```program``` folder will have the score program in it and we will use it to show how scores are calculated.
 
 Create mock scoring docker image for testing:
 
