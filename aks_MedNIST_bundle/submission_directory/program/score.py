@@ -1,13 +1,9 @@
 #!/usr/bin/env python
 import os, pdb, io
 from sys import argv
-# import urllib
-# from urlparse import urlsplit
-# from aad_blob_helper import AadBlobHelper
+import warnings
+warnings.filterwarnings('ignore')
 from sklearn.metrics import classification_report
-
-# from PIL import Image
-# import numpy as np
 
 # Submission Directory (/tmp/codalab/tmp######/run)
 #   |- input
@@ -29,41 +25,8 @@ OUT=argv[2] #/tmp/codalab/tmp######/run/output
 PREDICTION_RESULTS=os.path.join(IN,"res")
 REFERENCE=os.path.join(IN,"ref")
 
-using_blob = False # True for kubernetes
-
-if using_blob:
-    IN=argv[1] # is to become prediction blob, "container name" like xx-prediction-output
-    OUT=argv[2] # output directory
-    REFERENCE='/data/challenges/mednist-challenge-data'
-    blob_helper = AadBlobHelper()
-    blob_content = blob_helper.get_blob_to_text(IN, 'classification_results.csv')
-
 score_file = open(os.path.join(OUT, 'scores.txt'), 'w')
 html_file = open(os.path.join(OUT, 'scores.html'), 'w')
-
-# This file will be run like this:
-# python /tmp/codalab/tmpH8080V/run/program/score.py 126-prediction-output /tmp/codalab/tmpH8080V/run/output
-# python /tmp/codalab/tmpH8080V/run/program/score.py 126-prediction-output /tmp/codalab/tmpH8080V/run/output
-
-# root@codalab-869bfd7699-kwlsc:/worker# ls /tmp/codalab/tmpH8080V/run/output
-# scores.html  scores.txt
-# root@codalab-869bfd7699-kwlsc:/worker# cat /tmp/codalab/tmpH8080V/run/output/scores.txt
-# set1_score: 0.258234295416
-# set2_score: 0.260293358859
-# set3_score: 0.275580348812
-# root@codalab-869bfd7699-kwlsc:/worker# cat /tmp/codalab/tmpH8080V/run/output/scores.html
-#               precision    recall  f1-score   support
-
-#       HeadCT     0.2469    0.3291    0.2821      1015
-#          CXR     0.3349    0.2302    0.2728       908
-#      ChestCT     0.4067    0.2403    0.3021      1007
-#    AbdomenCT     0.2160    0.2279    0.2218       996
-#         Hand     0.1944    0.2348    0.2127       971
-#    BreastMRI     0.2569    0.2830    0.2693       993
-
-#    micro avg     0.2582    0.2582    0.2582      5890
-#    macro avg     0.2760    0.2575    0.2601      5890
-# weighted avg     0.2756    0.2582    0.2603      5890
 
 # Get soultion
 solution_file = os.path.join(REFERENCE, 'testing_solution.csv')
@@ -112,15 +75,12 @@ else:
         with open(os.path.join(PREDICTION_RESULTS, prediction_files[0]), 'r') as pred:
             pred_images, pred_classes = get_predictions(pred)
 
-
-
 # check for same number of images and classes
 if len(pred_images) != len(soln_images):
     raise Exception('Expected {} images and got {}.'.format(len(soln_images), len(pred_images)))
 
 if len(pred_classes) != len(soln_classes):
     raise Exception('Expected {} classes and got {}.'.format(len(soln_classes), len(pred_classes)))
-
 
 # Loop through solution and find prediction and then update new prediction class array for scoring
 synced_pred_classes = ['not updated']*len(pred_classes)
@@ -134,8 +94,6 @@ if 'not updated' in set(synced_pred_classes):
     raise Exception('Couldn\'t find a prediction for every test image')
 
 report = classification_report(soln_classes, synced_pred_classes, target_names=set(soln_classes), digits=4, output_dict=True)
-print(report)
-type(report)
 
 score_file.write('set1_score: {}\n'.format(report['weighted avg']['recall']))
 score_file.write('set2_score: {}\n'.format(report['weighted avg']['f1-score']))

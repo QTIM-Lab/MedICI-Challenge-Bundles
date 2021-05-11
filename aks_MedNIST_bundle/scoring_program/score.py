@@ -1,6 +1,8 @@
 #!/usr/bin/env python
 import os, pdb, io
 from sys import argv
+import warnings
+warnings.filterwarnings('ignore') 
 # import urllib
 # from urlparse import urlsplit
 # from aad_blob_helper import AadBlobHelper
@@ -134,8 +136,6 @@ if 'not updated' in set(synced_pred_classes):
     raise Exception('Couldn\'t find a prediction for every test image')
 
 report = classification_report(soln_classes, synced_pred_classes, target_names=set(soln_classes), digits=4, output_dict=True)
-print(report)
-type(report)
 
 score_file.write('set1_score: {}\n'.format(report['weighted avg']['recall']))
 score_file.write('set2_score: {}\n'.format(report['weighted avg']['f1-score']))
