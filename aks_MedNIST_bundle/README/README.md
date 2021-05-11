@@ -33,20 +33,6 @@ On windows it works a little differently I believe and you need to add yourself 
 docker build -f docker_code_training/Dockerfile -t medicichallenges/mednist:training docker_code_training;
 ```
 ## Run Training Image
-```
-docker run \
-  -it \
-  --rm \
-  --shm-size=256m \
-  -v `pwd`:`pwd` \
-  -w `pwd` \
-  medicichallenges/mednist:training \
-  python create_solution.py
-```
-
-## Start docker for training - Run by Participant
-
-> Note the training/validation splits from earlier are designed to be used for the training phase and the testing data for inference or final prediction phase.
 
 ```bash
 mkdir model_output;
