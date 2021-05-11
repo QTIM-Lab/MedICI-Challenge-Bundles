@@ -25,6 +25,8 @@ OUT=argv[2] #/tmp/codalab/tmp######/run/output
 PREDICTION_RESULTS=os.path.join(IN,"res")
 REFERENCE=os.path.join(IN,"ref")
 
+using_blob = False # True for kubernetes
+
 score_file = open(os.path.join(OUT, 'scores.txt'), 'w')
 html_file = open(os.path.join(OUT, 'scores.html'), 'w')
 
@@ -61,6 +63,10 @@ def get_predictions(pred):
 
 pred_images = []
 pred_classes = []
+# Running on infrastructure
+if using_blob:
+    pred = io.StringIO(unicode(blob_content))
+    pred_images, pred_classes = get_predictions(pred)
 
 # Running locally
 else:
