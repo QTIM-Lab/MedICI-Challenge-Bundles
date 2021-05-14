@@ -8,11 +8,15 @@ import torch
 from torch.utils.data import Dataset, DataLoader
 
 from monai.transforms import \
-    Compose, LoadImage, AddChannel, ScaleIntensity, ToTensor, RandRotate, RandFlip, RandZoom
+    Compose, LoadImage, AddChannel, ScaleIntensity, ToTensor, RandRotate, RandFlip, RandZoom, AsDiscrete, Activations
 
 from monai.networks.nets import densenet121
 from monai.metrics import compute_roc_auc
 
+
+
+to_onehot = AsDiscrete(to_onehot=True, n_classes = 6)
+act = Activations(softmax=True)
 
 IN = '/mnt/in'
 OUT = '/mnt/out'
@@ -133,7 +137,8 @@ for epoch in range(epoch_num):
                 val_images, val_labels = val_data[0].to(device), val_data[1].to(device)
                 y_pred = torch.cat([y_pred, model(val_images)], dim=0)
                 y = torch.cat([y, val_labels], dim=0)
-            auc_metric = compute_roc_auc(y_pred, y, to_onehot_y=True, softmax=True)
+            # auc_metric = compute_roc_auc(y_pred, y, to_onehot_y=True, softmax=True)
+            auc_metric = compute_roc_auc(act(y_pred), to_onehot(y))
             metric_values.append(auc_metric)
             acc_value = torch.eq(y_pred.argmax(dim=1), y)
             acc_metric = acc_value.sum().item() / len(acc_value)
