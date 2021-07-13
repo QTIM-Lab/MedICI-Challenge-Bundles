@@ -55,6 +55,36 @@ On windows it works a little differently I believe and you need to add yourself 
 ```bash
 docker build -f docker_code_training/Dockerfile -t medicichallenges/mednist:training docker_code_training;
 ```
+> Note about proxies (optional): A lot of times python packages and software are downloaded and installed inside your docker image. Academic and government institutions will sometimes proxy servers for added protection and builds will fail due to an inability to access these packages and software. If your institution requires the use of a proxy server you should read these [docs provided by docker](https://docs.docker.com/network/proxy/).
+
+There are two methods mentioned for using proxy servers:
+* docker client config change to set proxy address
+create or edit the file ```~/.docker/config.json```:
+```
+{
+ "proxies":
+ {
+   "default":
+   {
+     "httpProxy": "http://192.168.1.12:3128",
+     "httpsProxy": "http://192.168.1.12:3128",
+     "noProxy": "*.test.example.com,.example2.com,127.0.0.0/8"
+   }
+ }
+}
+```
+* environment variables: when you build the image, or using the --env flag when you create or run the container, you can set one or more of the following variables to the appropriate value
+
+Examples:
+|Variable|Dockerfile Example|docker run example|
+|---|---|---|
+|HTTP_PROXY|ENV HTTP_PROXY="http://192.168.1.12:3128"|--env HTTP_PROXY="http://192.168.1.12:3128"|
+|HTTPS_PROXY|ENV HTTPS_PROXY="https://192.168.1.12:3128"|--env HTTPS_PROXY="https://192.168.1.12:3128"|
+|FTP_PROXY|ENV FTP_PROXY="ftp://192.168.1.12:3128"|--env FTP_PROXY="ftp://192.168.1.12:3128"|
+|NO_PROXY|ENV NO_PROXY="*.test.example.com,.example2.com"|--env NO_PROXY="*.test.example.com,.example2.com"|
+
+
+
 ## Run Training Image
 
 ```bash
