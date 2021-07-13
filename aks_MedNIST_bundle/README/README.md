@@ -156,13 +156,11 @@ model_output
 ## Register for Challenge
 ![register.png](../register.png)
 ## Upload Zipped Inference Algorithm
-![upload_zipped_inference_algorithm_1.png](../upload_zipped_inference_algorithm_1.png)
-![upload_zipped_inference_algorithm_2.png](../upload_zipped_inference_algorithm_2.png)
+![upload_zipped_inference_algorithm.png](../upload_zipped_inference_algorithm.png)
 ## Submit Uploaded Image for Inference and Evalutation
 ![submit_uploaded_image_for_inference_and_evaluation_1.png](../submit_uploaded_image_for_inference_and_evaluation_1.png)
-![submit_uploaded_image_for_inference_and_evaluation_2.png](../submit_uploaded_image_for_inference_and_evaluation_2.png)
 ## View Leaderboard
-![submit_uploaded_image_for_inference_and_evaluation_1.png](../submit_uploaded_image_for_inference_and_evaluation_1.png)
+![submit_uploaded_image_for_inference_and_evaluation_1.png](../leader_board.png)
 
 # Scoring - Run by Challenge Platform
 > This section is extra and not necessary for demo, but might help understanding what is happening during a submission.
