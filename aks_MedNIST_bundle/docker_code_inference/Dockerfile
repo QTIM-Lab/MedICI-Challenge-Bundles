@@ -1,7 +1,7 @@
 FROM projectmonai/monai:0.4.0
 
 # Install vi
-RUN apt update -y; apt-get install vim -y; apt-get -y install sudo
+RUN apt update -y; apt-get install vim -y
 
 # Create appuser 
 # Note: needed for use in kubernetes (otherwise the container has no user)

@@ -15,7 +15,6 @@ force_submission_to_leaderboard: true
 has_registration: false
 html:
   data: data.html
-  docker: upload_docker_submission.html
   evaluation: evaluation.html
   overview: overview.html
   terms: terms.html

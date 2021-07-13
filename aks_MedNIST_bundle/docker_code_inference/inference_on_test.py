@@ -1,8 +1,7 @@
-import os
+import os, shutil
 import numpy as np
 import matplotlib.pyplot as plt
 from PIL import Image
-
 
 import torch
 from torch.utils.data import Dataset, DataLoader
@@ -83,3 +82,9 @@ with open(os.path.join(OUT,'classification_results.csv'), 'w') as f:
 with open(os.path.join(OUT,'classification_results.csv'), 'a') as f:
     for i,image in enumerate(image_files):
         f.write(f'{image},{label_key[y_pred[i]]}\n')
+
+# Copy model to output
+src="best_metric_model.pth"
+dest=OUT
+shutil.copyfile(src, os.path.join(dest,src))
+
